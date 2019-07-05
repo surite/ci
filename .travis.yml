@@ -9,12 +9,16 @@ jdk:
 jobs:
   include:
     - stage: unit test
-      script: gradle build
+      script:
+      - cd server
+      - gradle build
       branches:
         only:
         - server
     - stage: code scan
-      script: gradle sonarqube
+      script:
+      - cd client
+      - gradle sonarqube
       branches:
         only:
         - client
