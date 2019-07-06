@@ -12,13 +12,7 @@ jobs:
       script:
       - cd server
       - gradle build
-      branches:
-        only:
-        - server
     - stage: code scan
       script:
       - cd client
       - gradle sonarqube
-      branches:
-        only:
-        - client
