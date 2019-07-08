@@ -35,6 +35,6 @@ dependencies {
 sonarqube {
     properties {
         property "sonar.projectName", "singleton-demo"
-        property "sonar.projectKey", "singleton-demo:devops"
+        property "sonar.projectKey", "$sonarProjectKey"
     }
 }
