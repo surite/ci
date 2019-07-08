@@ -34,16 +34,7 @@ dependencies {
 
 sonarqube {
     properties {
-        property "sonar.projectName", "devops ci"
-        property "sonar.projectKey", "my:devops"
+        property "sonar.projectName", "singleton-demo"
+        property "sonar.projectKey", "singleton-demo:devops"
     }
 }
-
-// jacocoTestReport {
-//     reports {
-//         xml.enabled = true
-//         html.enabled = true
-//     }
-// }
-
-// check.dependsOn jacocoTestReport
