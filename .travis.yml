@@ -15,4 +15,4 @@ jobs:
     - stage: code scan
       script:
       - cd server
-      - gradle sonarqube
+      - gradle sonarqube -PsonarPeojectKey=$SONAR_PROJECT_KEY
