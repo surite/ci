@@ -19,4 +19,4 @@ jobs:
       - echo $SONAR_PROJECT_KEY
       - echo $SONAR_PROJECT_NAME
       - cd server
-      - gradle sonarqube -PsonarProjectKey=$SONAR_PROJECT_KEY -PsonarProjectName=$SONAR_PROJECT_NAME
+      - gradle sonarqube -PsonarProjectKey=$SONAR_PROJECT_KEY -PsonarProjectName=$SONAR_PROJECT_NAME -PsonarOrg=$SONAR_ORG
