@@ -37,5 +37,6 @@ sonarqube {
         property "sonar.projectName", sonarProjectName
         property "sonar.projectKey", sonarProjectKey
         property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.organization", sonarOrg
     }
 }
