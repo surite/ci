@@ -1,1 +1,1 @@
-# README for server
+# README for client

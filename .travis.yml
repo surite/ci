@@ -10,9 +10,9 @@ jobs:
   include:
     - stage: unit test
       script:
-      - cd server
+      - cd client
       - gradle build
     - stage: code scan
       script:
-      - cd server
+      - cd client
       - gradle sonarqube -PsonarProjectKey=$SONAR_PROJECT_KEY -PsonarProjectName=$SONAR_PROJECT_NAME -PsonarOrg=$SONAR_ORG
