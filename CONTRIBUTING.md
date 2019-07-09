@@ -34,7 +34,7 @@ be done to setup CI pipeline in your fork repository.
     a. My Organizations -> select your own Organization -> Administration -> Project Management -> Create Project,
        input a customized project name and key(key must be unique in SonaCloud) then create it.
        
-    b. Mark down the key name of this Organization in right-up corner, it will be used in Travis CI configuration later.
+    b. Mark down the key of this Organization in right-up corner(not Organization name), it will be used in Travis CI configuration later.
     
 3. Create Quality Gate
 
