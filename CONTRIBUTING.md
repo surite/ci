@@ -42,7 +42,7 @@ be done to setup CI pipeline in your fork repository.
        
        Blocker Issues  > 0
        
-       Coverage < 60%
+       Coverage < 60% (when you input coverage value, just input number without %)
        
        Vulnerabilities > 0
        
