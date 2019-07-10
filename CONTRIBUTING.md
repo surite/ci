@@ -54,7 +54,7 @@ be done to setup CI pipeline in your fork repository.
 
 2. Find your fork repository in your account settings, enabled it then click 'settings', add following environment variables
     
-    SONAR_ORG=<Organization key in SonarCloud configuration step2.b>
+    SONAR_ORG=\<Organization key in SonarCloud configuration step2.b\>
     
     SONAR_TOKEN=\<token generated in SonarCloud\>
     
