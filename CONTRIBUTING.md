@@ -67,4 +67,20 @@ be done to setup CI pipeline in your fork repository.
 After you finished above configurations, you can commit code and push to your fork repository. It will trigger CI on Travis, you can login Travis CI to see result.
 You can login SonarCloud.io to see code scan details under your project.
 
+##### Sonatype DepShield Configuration
+
+1. Sonatype DepShield is a GitHub App used by developers to identify and remediate vulnerabilities in their open source dependencies.
+
+2. Login to Github, then go to 'https://depshield.github.io/#/'.
+
+3. Click the "Install DepShield on your GitHub repositories" button.
+
+4. Click the "Configure" button on right side.
+
+5. Click the account or group which forked Singleton.
+
+6. Select "Only select repositories" and choose the repo forked from Singleton, then click "Install" button on bottom.
+
+7. Now you have done the Sonatype DepShield Configuration, Sonatype DepShield will scan the repo forked from Singleton every day. If any vulnerability in open source dependencies is aware of, a issue will be filed to "Issue" tab of the repo home page. To enable the "Issue" tab on repo home page, go to the "Settings" tab of the repo home page, scroll down and select "Issues" checkbox in "Features" panel.
+
 ### Pull Request
