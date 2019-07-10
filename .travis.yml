@@ -8,11 +8,18 @@ jdk:
   - openjdk8
 jobs:
   include:
-    - stage: unit test
+    # - stage: unit test
+    #   script:
+    #   - cd server
+    #   - gradle build
+    # - stage: code scan
+    #   script:
+    #   - cd server
+    #   - gradle sonarqube -PsonarProjectKey=$SONAR_PROJECT_KEY -PsonarProjectName=$SONAR_PROJECT_NAME -PsonarOrg=$SONAR_ORG
+    - stage: auto test
       script:
-      - cd server
-      - gradle build
-    - stage: code scan
-      script:
-      - cd server
-      - gradle sonarqube -PsonarProjectKey=$SONAR_PROJECT_KEY -PsonarProjectName=$SONAR_PROJECT_NAME -PsonarOrg=$SONAR_ORG
+      - git clone --branch=devops https://github.com/singleton-demo/ci.git devops
+      - ls
+      - ls devops
+      - cd devops/autotest/server
+      - ./run.sh
