@@ -8,15 +8,11 @@ jdk:
   - openjdk8
 jobs:
   include:
-    # - stage: unit test
-    #   script:
-    #   - cd server
-    #   - gradle build
+    - stage: unit test
+      script:
+      - cd server
+      - gradle build
     - stage: code scan
       script:
-      - echo $SONAR_ORG
-      - echo $SONAR_TOKEN
-      - echo $SONAR_PROJECT_KEY
-      - echo $SONAR_PROJECT_NAME
       - cd server
       - gradle sonarqube -PsonarProjectKey=$SONAR_PROJECT_KEY -PsonarProjectName=$SONAR_PROJECT_NAME -PsonarOrg=$SONAR_ORG
