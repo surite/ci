@@ -26,4 +26,4 @@ jobs:
       - cd server
       - gradle sonarqube -Dsonar.projectName=$SONAR_ORG:singleton -Dsonar.projectKey=$SONAR_ORG:singleton -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.branch=$TRAVIS_BRANCH -Dsonar.qualitygate=server-gate
       - cd ..
-      - ./checkSonarQualityGateByAPI -ProjectKeys=$SONAR_ORG:singleton -BranchName=$TRAVIS_BRANCH
+      - chmod 777 checkSonarQualityGateByAPI && ./checkSonarQualityGateByAPI -ProjectKeys=$SONAR_ORG:singleton -BranchName=$TRAVIS_BRANCH
