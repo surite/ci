@@ -15,4 +15,4 @@ jobs:
     - stage: code scan
       script:
       - cd server
-      - gradle sonarqube -PsonarProjectKey=$SONAR_PROJECT_KEY -PsonarProjectName=$SONAR_PROJECT_NAME -PsonarOrg=$SONAR_ORG
+      - gradle sonarqube -Dsonar.projectName=$SONAR_ORG:singleton:$TRAVIS_BRANCH -Dsonar.projectKey=$SONAR_ORG:singleton:$TRAVIS_BRANCH -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.branch=$TRAVIS_BRANCH
