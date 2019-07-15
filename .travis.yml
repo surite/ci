@@ -22,6 +22,6 @@ jobs:
       - gradle build
     - stage: code scan
       script:
-      - python ./configsonar.py '$SONAR_ORG:singleton $TRAVIS_BRANCH' $SONAR_ORG:singleton:$TRAVIS_BRANCH $SONAR_ORG testgate
+      - python ./configsonar.py '$SONAR_ORG:singleton $TRAVIS_BRANCH' $SONAR_ORG:singleton:$TRAVIS_BRANCH $SONAR_ORG testgate $SONAR_TOKEN
       - cd server
       - gradle sonarqube -Dsonar.projectName=$SONAR_ORG:singleton -Dsonar.projectKey=$SONAR_ORG:singleton -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.branch=$TRAVIS_BRANCH -Dsonar.qualitygate=server-gate
