@@ -8,8 +8,14 @@ addons:
       secure: $SONAR_TOKEN
 jdk:
   - openjdk8
+before_install:
+  - sudo apt-get -y install python3-pip python-dev
+  - sudo pip3 install -U setuptools
+  - sudo pip3 install -U virtualenvwrapper
+  - python3 -V
+  - pip3 -V
 install:
-  - pip3 intall requests
+  - sudo pip3 intall requests
 jobs:
   include:
     - stage: unit test
