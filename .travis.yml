@@ -1,4 +1,6 @@
 language: java
+python:
+  - "3.4"
 addons:
   sonarcloud:
     organization: $SONAR_ORG
@@ -6,6 +8,8 @@ addons:
       secure: $SONAR_TOKEN
 jdk:
   - openjdk8
+install:
+  - pip3 intall requests
 jobs:
   include:
     - stage: unit test
@@ -15,4 +19,5 @@ jobs:
     - stage: code scan
       script:
       - cd server
+      - python ./configsonar.py '$SONAR_ORG:singleton $TRAVIS_BRANCH' $SONAR_ORG:singleton:$TRAVIS_BRANCH $SONAR_ORG testgate
       - gradle sonarqube -Dsonar.projectName=$SONAR_ORG:singleton -Dsonar.projectKey=$SONAR_ORG:singleton -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.branch=$TRAVIS_BRANCH -Dsonar.qualitygate=server-gate
