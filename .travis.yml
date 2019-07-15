@@ -13,7 +13,7 @@ before_install:
   - python3 -V
   - pip3 -V
 install:
-  - sudo pip3 intall requests
+  - sudo pip3 install requests
 jobs:
   include:
     - stage: unit test
