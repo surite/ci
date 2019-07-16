@@ -21,6 +21,7 @@ jobs:
     - stage: auto test
       script:
       - cd build && jar cvf service.jar BOOT-INF META-INF org
+      - cp service.jar ../
       - cd ..
       - docker build -t service .
       - docker run -d -p 127.0.0.1:8090:8090 service
