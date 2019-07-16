@@ -24,12 +24,8 @@ jobs:
       - cp service.jar ../
       - cd ..
       - docker build -t service .
-      - docker run -d -p 127.0.0.1:8090:8090 service
+      - docker run -d -p 127.0.0.1:8090:8090 --name singleton service
       - docker ps
       - sleep 20
-      - echo | curl https://127.0.0.1:8090/i18n/api/v2/formatting/patterns/locales/zh-Hans?scope=dates
-      - git clone --branch=devops https://github.com/singleton-demo/ci.git devops
-      - ls
-      - ls devops
-      - cd devops/autotest/server/APITest && gradle build
-      - java -cp "target/*:resource/*" org.testng.TestNG testng.xml
+      - docker exec singleton bash -c "echo | curl https://127.0.0.1:8090/i18n/api/v2/formatting/patterns/locales/zh-Hans?scope=dates"
+      - docker exec singleton bash -c 'git clone --branch=devops https://github.com/singleton-demo/ci.git devops && cd devops/autotest/server/APITest && gradle build && java -cp "target/*:resource/*" org.testng.TestNG testng.xml'
