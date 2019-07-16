@@ -27,5 +27,5 @@ jobs:
       - docker run -d -p 127.0.0.1:8090:8090 --name singleton singleton
       - docker ps
       - sleep 20
-      - docker exec -it singleton bash -c "echo | curl https://127.0.0.1:8090/i18n/api/v2/formatting/patterns/locales/zh-Hans?scope=dates"
+      - echo | curl https://127.0.0.1:8090/i18n/api/v2/formatting/patterns/locales/zh-Hans?scope=dates -k
       - docker exec singleton bash -c 'git clone --branch=devops https://github.com/singleton-demo/ci.git devops && cd devops/autotest/server/APITest && gradle build && java -cp "target/*:resource/*" org.testng.TestNG testng.xml'
