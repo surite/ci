@@ -2,9 +2,7 @@ FROM java:8
 
 MAINTAINER surite@live.cn
 
-ADD publish/singleton-i18n.jar app.jar
-
-RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
+ADD service.jar app.jar
 
 EXPOSE 8090
 

@@ -6,6 +6,8 @@ addons:
       secure: $SONAR_TOKEN
 jdk:
   - openjdk8
+service:
+  - docker
 jobs:
   include:
     # - stage: unit test
@@ -18,8 +20,14 @@ jobs:
     #   - gradle sonarqube -PsonarProjectKey=$SONAR_PROJECT_KEY -PsonarProjectName=$SONAR_PROJECT_NAME -PsonarOrg=$SONAR_ORG
     - stage: auto test
       script:
+      - cd build && jar cvf service.jar BOOT-INF META-INF org
+      - cd ..
+      - docker build -t service .
+      - docker run -d -p 127.0.0.1:8090:8090 service
+      - docker ps
+      - sleep 20
       - git clone --branch=devops https://github.com/singleton-demo/ci.git devops
       - ls
       - ls devops
-      - cd devops/autotest/server
-      - ./run.sh
+      - cd devops/autotest/server/APITest && gradle build
+      - java -cp "target/*:resource/*" org.testng.TestNG testng.xml
