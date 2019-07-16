@@ -22,15 +22,18 @@ if __name__ == "__main__":
     response = requests.post("https://sonarcloud.io/api/qualitygates/create", data=data, auth=auth)
     gate_create_res = response.json()
     print(gate_create_res)
-    gate_id = gate_create_res['id']
-    print("quality gate id='%s'" % gate_id)
+    try:
+        gate_id = gate_create_res['id']
+    except KeyError:
+        print('quality gate exists')
+    else:
+        print("quality gate id='%s'" % gate_id)
+        #create multiple conditions
+        print('3. Create conditions for quality gate')
+        data={'error':'0','gateId':gate_id, 'metric':'code_smells', 'op':'GT','organization':org_key}
+        res = requests.post("https://sonarcloud.io/api/qualitygates/create_condition", data=data, auth=auth)
+        print(res.json())
 
-    #create multiple conditions
-    print('3. Create conditions for quality gate')
-    data={'error':'0','gateId':gate_id, 'metric':'code_smells', 'op':'GT','organization':org_key}
-    res = requests.post("https://sonarcloud.io/api/qualitygates/create_condition", data=data, auth=auth)
-    print(res.json())
-
-    print('4. Associate project to quality gate')
-    data={'gateId':gate_id, 'organization':org_key, 'projectKey':project_key}
-    requests.post("https://sonarcloud.io/api/qualitygates/select", data=data, auth=auth)
+        print('4. Associate project to quality gate')
+        data={'gateId':gate_id, 'organization':org_key, 'projectKey':project_key}
+        requests.post("https://sonarcloud.io/api/qualitygates/select", data=data, auth=auth)
