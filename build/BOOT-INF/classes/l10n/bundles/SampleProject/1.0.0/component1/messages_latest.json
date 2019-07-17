@@ -1,0 +1,13 @@
+{
+  "component" : "component1",
+  "messages" : {
+    "sample.apple" : "the first string",
+    "sample.banana" : "the second string",
+    "sample.cat" : "the third string",
+    "sample.dog" : "this is fourth string",
+    "sample.egg" : "this is fifth string",
+    "sample.fly" : "this is sixth string",
+    "sample.giant" : "this is seventh string"
+  },
+  "locale" : "latest"
+}
