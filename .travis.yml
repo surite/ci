@@ -10,14 +10,14 @@ service:
   - docker
 jobs:
   include:
-    # - stage: unit test
-    #   script:
-    #   - cd server
-    #   - gradle build
-    # - stage: code scan
-    #   script:
-    #   - cd server
-    #   - gradle sonarqube -PsonarProjectKey=$SONAR_PROJECT_KEY -PsonarProjectName=$SONAR_PROJECT_NAME -PsonarOrg=$SONAR_ORG
+    - stage: unit test
+      script:
+      - cd server
+      - gradle build
+    - stage: code scan
+      script:
+      - cd server
+      - gradle sonarqube -PsonarProjectKey=$SONAR_PROJECT_KEY -PsonarProjectName=$SONAR_PROJECT_NAME -PsonarOrg=$SONAR_ORG
     - stage: auto test
       script:
       - cd build && jar -cvf0m service.jar ./META-INF/MANIFEST.MF ./org/ ./BOOT-INF/ ./resources.zip
@@ -28,7 +28,6 @@ jobs:
       - docker ps
       - sleep 20
       - docker ps
-      - echo | curl https://127.0.0.1:8090/i18n/api/v2/formatting/patterns/locales/zh-Hans?scope=dates -k
       - git clone --branch=devops https://github.com/singleton-demo/ci.git devops
       - ls
       - cd devops/autotest/server/APITest && gradle build
