@@ -31,12 +31,3 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     compile group: 'log4j', name: 'log4j', version:'1.2.12'
 }
-
-sonarqube {
-    properties {
-        property "sonar.projectName", sonarProjectName
-        property "sonar.projectKey", sonarProjectKey
-        property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.organization", sonarOrg
-    }
-}

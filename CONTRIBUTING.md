@@ -67,20 +67,18 @@ be done to setup CI pipeline in your fork repository.
 After you finished above configurations, you can commit code and push to your fork repository. It will trigger CI on Travis, you can login Travis CI to see result.
 You can login SonarCloud.io to see code scan details under your project.
 
-##### Sonatype DepShield Configuration
+##### Dependabot Preview(A Github APP owned by Github which provide dependencies scan) Configuration
 
-1. Sonatype DepShield is a GitHub App used by developers to identify and remediate vulnerabilities in their open source dependencies.
+1. Login to Github, click 'Marketplace' in navigation on top.
 
-2. Login to Github, then go to 'https://depshield.github.io/#/'.
+2. Search for 'Dependabot Preview' and click the search result.
 
-3. Click the "Install DepShield on your GitHub repositories" button.
+3. Click 'Set up a plan', then the screen scroll down to the end of the page, find 'Install it for free' and click it, then click 'Complete order and begin installation', then click 'Install' to install the Github APP.
 
-4. Click the "Configure" button on right side.
+4. Click 'Sign in with Github', then click 'Authorize Dependabot Preview by GitHub' to sign in Dependabot Preview. After that, you will able to see the Dependabot Preview panel.
 
-5. Click the account or group which forked Singleton.
+5. Click 'Select repos to add' and fill in the repo, dependencies description file(e.g. pom.xml for Maven, build.gradle for Gradle, package.json for NPM) info in the popup modal, then click 'Add language' to finish the set up.
 
-6. Select "Only select repositories" and choose the repo forked from Singleton, then click "Install" button on bottom.
-
-7. Now you have done the Sonatype DepShield Configuration, Sonatype DepShield will scan the repo forked from Singleton every day. If any vulnerability in open source dependencies is aware of, a issue will be filed to "Issue" tab of the repo home page. To enable the "Issue" tab on repo home page, go to the "Settings" tab of the repo home page, scroll down and select "Issues" checkbox in "Features" panel.
+6. After the set up, the Dependabot Preview will scan the open dependencies in your project automatically, if any vulnerability found, pull requests with detailed info and auto fix will be created for the repo, please keep eye on it.
 
 ### Pull Request
