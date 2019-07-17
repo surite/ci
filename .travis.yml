@@ -28,8 +28,6 @@ jobs:
       - cd server
       - gradle sonarqube -Dsonar.projectName=$SONAR_ORG:singleton -Dsonar.projectKey=$SONAR_ORG:singleton -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=$SONAR_ORG -Dsonar.branch=$TRAVIS_BRANCH -Dsonar.qualitygate=server-gate
       - cd .. && chmod 777 checkSonarQualityGateByAPI && ./checkSonarQualityGateByAPI -ProjectKeys=$SONAR_ORG:singleton -BranchName=$TRAVIS_BRANCH
-
-      - gradle sonarqube -PsonarProjectKey=$SONAR_PROJECT_KEY -PsonarProjectName=$SONAR_PROJECT_NAME -PsonarOrg=$SONAR_ORG
     - stage: auto test
       script:
       - cd build && jar -cvf0m service.jar ./META-INF/MANIFEST.MF ./org/ ./BOOT-INF/ ./resources.zip
