@@ -30,6 +30,7 @@ jobs:
       - docker ps
       - echo | curl https://127.0.0.1:8090/i18n/api/v2/formatting/patterns/locales/zh-Hans?scope=dates -k
       - git clone --branch=devops https://github.com/singleton-demo/ci.git
+      - ls
       - cd devops/autotest/server/APITest && gradle build
       - docker cp l10n singleton:/
       - java -cp "target/*:resource/*" org.testng.TestNG testng.xml
