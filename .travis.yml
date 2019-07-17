@@ -20,13 +20,14 @@ jobs:
     #   - gradle sonarqube -PsonarProjectKey=$SONAR_PROJECT_KEY -PsonarProjectName=$SONAR_PROJECT_NAME -PsonarOrg=$SONAR_ORG
     - stage: auto test
       script:
-      - cd build && jar -cvf0m service.jar ./META-INF/MANIFEST.MF ./org/ ./BOOT-INF/
+      - cd build && jar -cvf0m service.jar ./META-INF/MANIFEST.MF ./org/ ./BOOT-INF/ ./resources.zip
       - cp service.jar ../
       - cd ..
       - docker build -t singleton .
       - docker run -d -p 8090:8090 --name singleton singleton
       - docker ps
       - sleep 20
+      - docker ps
       - echo | curl https://127.0.0.1:8090/i18n/api/v2/formatting/patterns/locales/zh-Hans?scope=dates -k
       - echo | curl https://127.0.0.1:8090/i18n/api/v2/formatting/patterns/locales/zh-Hans?scope=dates
       - docker exec singleton bash -c 'git clone --branch=devops https://github.com/singleton-demo/ci.git devops && cd devops/autotest/server/APITest && cp l10n / && gradle build && java -cp "target/*:resource/*" org.testng.TestNG testng.xml'
