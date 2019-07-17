@@ -30,4 +30,4 @@ jobs:
       - docker ps
       - echo | curl https://127.0.0.1:8090/i18n/api/v2/formatting/patterns/locales/zh-Hans?scope=dates -k
       - echo | curl https://127.0.0.1:8090/i18n/api/v2/formatting/patterns/locales/zh-Hans?scope=dates
-      - docker exec singleton bash -c 'git clone --branch=devops https://github.com/singleton-demo/ci.git devops && cd devops/autotest/server/APITest && cp l10n / && gradle build && java -cp "target/*:resource/*" org.testng.TestNG testng.xml'
+      - docker exec singleton bash -c 'git clone --branch=devops https://github.com/singleton-demo/ci.git devops && cd devops/autotest/server/APITest && cp -r l10n / && gradle build && java -cp "target/*:resource/*" org.testng.TestNG testng.xml'
